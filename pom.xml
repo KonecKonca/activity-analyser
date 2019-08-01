@@ -8,6 +8,19 @@
     <artifactId>com.kozitski.kafka</artifactId>
     <version>1.0-SNAPSHOT</version>
 
+    <repositories>
+        <repository>
+            <id>oss.snapshots</id>
+            <name>OSS Sonatype Snapshot Repository</name>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -16,6 +29,19 @@
             <version>1.18.4</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.github.igor-suhorukov/instagramscraper -->
+        <dependency>
+            <groupId>com.github.igor-suhorukov</groupId>
+            <artifactId>instagramscraper</artifactId>
+            <version>2.2</version>
+        </dependency>
+
+<!--        <dependency>-->
+<!--            <groupId>com.sachinhandiekar</groupId>-->
+<!--            <artifactId>jInstagram</artifactId>-->
+<!--            <version>1.2.2</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 
