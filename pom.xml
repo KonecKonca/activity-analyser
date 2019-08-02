@@ -37,11 +37,11 @@
             <version>2.2</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>com.sachinhandiekar</groupId>-->
-<!--            <artifactId>jInstagram</artifactId>-->
-<!--            <version>1.2.2</version>-->
-<!--        </dependency>-->
+        <dependency>
+            <groupId>com.vk.api</groupId>
+            <artifactId>sdk</artifactId>
+            <version>1.0.2</version>
+        </dependency>
 
     </dependencies>
 
@@ -62,7 +62,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>com.kozitski.analyser.AppRunner</mainClass>
+                            <mainClass>com.kozitski.analyser.InstaApiTest</mainClass>
                         </manifest>
                     </archive>
                     <descriptorRefs>

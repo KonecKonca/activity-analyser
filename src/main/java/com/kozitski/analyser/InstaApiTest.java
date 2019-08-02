@@ -1,17 +1,27 @@
 package com.kozitski.analyser;
 
 import me.postaddict.instagram.scraper.Instagram;
+import me.postaddict.instagram.scraper.MediaUtil;
 import me.postaddict.instagram.scraper.cookie.CookieHashSet;
 import me.postaddict.instagram.scraper.cookie.DefaultCookieJar;
 import me.postaddict.instagram.scraper.interceptor.ErrorInterceptor;
-import me.postaddict.instagram.scraper.model.Account;
+import me.postaddict.instagram.scraper.model.*;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.util.List;
+import java.util.Optional;
 
-public class AppRunner {
+/**
+ * --- Can receive:
+ * ==> comments by media
+ * ==> all posts form page
+ * ==> all commentators[ can be key for searching all strong connected persons] (possible to create graph of coments)
+ */
+public class InstaApiTest {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, IllegalAccessException {
 
 //        InstagramService instagramService = new InstagramAuthService()
 //                .apiKey("8a5fdd90bcc94cd399ce20081d845662")  // client ID
@@ -50,15 +60,25 @@ public class AppRunner {
         Instagram instagram = new Instagram(httpClient);
         Account account = instagram.getAccountByUsername("koneckonca");
 
-        System.out.println("\n\n");
-        System.out.println(account.getUsername());
-        System.out.println(account.getFollows());
-        System.out.println(account.getMedia().getCount());
+//        Media media = instagram.getMediaByUrl("https://www.instagram.com/p/B0RYyrXCYW4");
+//        System.out.println(media.getOwner().getUsername());
+
+
+
+        PageObject<Account> followers = instagram.getFollowers(5815808155L, 100);
+
+        PageObject<Media> medias = instagram.getMedias("koneckonca", 100);
+        PageObject<Comment> comment = instagram.getCommentsByMediaCode("Bz1IA64oOCn", 100);
+        comment.getNodes().forEach(c -> System.out.println("         " + c.getText() + "  "  + c.getOwner().getUsername()));
+
 
     }
 
 }
 
+
+// 12892271435  -- koneckonca ID
+// https://www.instagram.com/stories/koneckonca/2100992672004114816/?utm_source=ig_story_item_share&igshid=15uwdsfwbqy54
 
 // All info about dimas_gerasim
 // https://www.instagram.com/dimas_gerasim/?__a=1
